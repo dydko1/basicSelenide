@@ -12,7 +12,8 @@ public class Test12 {
 
     @Test
     public void searchBaeldung() throws Exception {
-        open("https://duckduckgo.com/");
+        //open("https://duckduckgo.com/");
+        open("/");
         SelenideElement searchbox = $(By.id("searchbox_input"));
         searchbox.click();
         searchbox.setValue("Baeldung");

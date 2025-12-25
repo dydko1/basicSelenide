@@ -1,4 +1,5 @@
 package pagination.a;
+// PrimeNgTableComponent.java
 
 import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.SelenideElement;
@@ -6,36 +7,37 @@ import com.codeborne.selenide.SelenideElement;
 import java.util.List;
 import java.util.stream.IntStream;
 
+import static com.codeborne.selenide.Condition.*;
+import static com.codeborne.selenide.Selenide.$;
+
 public class PrimeNgTableComponent {
 
-    private final SelenideElement tableRoot;
-
-    public PrimeNgTableComponent(SelenideElement tableRoot) {
-        this.tableRoot = tableRoot;
+    public SelenideElement root() {
+        return $("div.p-datatable").shouldBe(visible);
     }
 
-    public List<String> getColumnTexts(String headerText) {
-        Integer colIndex = findColumnIndex(headerText);
-        return rows().stream()
-                .map(r -> r.$$("td").get(colIndex)
-                        .getText()).toList();
-    }
-
-    public Integer getRowCount() {
-        return rows()
-                .size();
+    private ElementsCollection headerCells() {
+        return root().$$("thead th");
     }
 
     private ElementsCollection rows() {
-        return tableRoot
-                .$$(":scope tbody tr");
+        return root().$$("tbody tr");
     }
 
-    private Integer findColumnIndex(String headerText) {
-        return IntStream.range(0, tableRoot.$$(":scope thead th").size())
-                .filter(i -> tableRoot.$$(":scope thead th")
-                        .get(i).getText().contains(headerText))
-                .findFirst()
-                .orElseThrow();
+    public void shouldBeVisible() {
+        root().shouldBe(visible);
+    }
+
+    public int getRowCount() {
+        return rows().size();
+    }
+
+    public List<String> getColumnTexts(String headerName) {
+        int index = headerCells().texts().indexOf(headerName);
+        if (index < 0) throw new IllegalArgumentException("No column: " + headerName);
+
+        return rows().stream()
+                .map(r -> r.$$("td").get(index).getText())
+                .toList();
     }
 }

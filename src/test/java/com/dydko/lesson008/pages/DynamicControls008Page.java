@@ -1,6 +1,8 @@
 package com.dydko.lesson008.pages;
 
 import com.codeborne.selenide.SelenideElement;
+import com.dydko.config.ConfigKeys;
+import com.dydko.config.TestProperties;
 import lombok.Getter;
 
 import static com.codeborne.selenide.Selenide.*;
@@ -9,7 +11,7 @@ import static com.codeborne.selenide.Selenide.*;
 public class DynamicControls008Page {
 
     public void openPage() {
-        open("https://the-internet.herokuapp.com/dynamic_controls");
+        open(TestProperties.get(ConfigKeys.App.BASE_URL) + "/dynamic_controls");
     }
 
     private final SelenideElement checkbox =

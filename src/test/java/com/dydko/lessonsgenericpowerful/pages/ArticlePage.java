@@ -1,4 +1,4 @@
-package com.dydko.lessons011x.pages;
+package com.dydko.lessonsgenericpowerfull.pages;
 
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Condition.visible;

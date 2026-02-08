@@ -8,8 +8,8 @@ public class TestSetup {
     @BeforeAll
     static void setup() {
         Configuration.browser = TestProperties.get(ConfigKeys.Browser.NAME);
-        Configuration.timeout = Long.parseLong(ConfigKeys.Browser.TIMEOUT);
-        Configuration.headless = false;
+        Configuration.timeout = Long.parseLong(TestProperties.get(ConfigKeys.Browser.TIMEOUT));
+        Configuration.headless = Boolean.parseBoolean(TestProperties.get(ConfigKeys.Browser.HEADLESS));
         Configuration.browserSize = TestProperties.get(ConfigKeys.Browser.SIZE);
         Configuration.browserPosition = "0x0";
         Configuration.headless = true;

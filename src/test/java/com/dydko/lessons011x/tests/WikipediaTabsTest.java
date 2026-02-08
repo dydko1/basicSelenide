@@ -3,7 +3,6 @@ package com.dydko.lessons011x.tests;
 import com.dydko.lessons011x.pages.ArticlePage;
 import com.dydko.lessons011x.pages.HistoryPage;
 import com.dydko.lessons011x.pages.WikipediaJavaPage;
-import com.dydko.tests.BaseTest;
 import org.junit.jupiter.api.Test;
 
 public class WikipediaTabsTest extends BaseTest {

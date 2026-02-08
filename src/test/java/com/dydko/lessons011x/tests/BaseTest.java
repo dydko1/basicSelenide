@@ -1,4 +1,4 @@
-package com.dydko.tests;
+package com.dydko.lessons011x.tests;
 
 import com.codeborne.selenide.Selenide;
 import com.dydko.config.ConfigKeys;

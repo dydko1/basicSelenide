@@ -7,7 +7,7 @@ import org.junit.jupiter.api.Test;
 
 import static com.codeborne.selenide.Selenide.page;
 
-public class WikipediaTabsTest extends BaseTest {
+public class ArticleTabsTest extends BaseTest {
 
   @Test
   void should_open_article_and_history_using_generic_tabs() {

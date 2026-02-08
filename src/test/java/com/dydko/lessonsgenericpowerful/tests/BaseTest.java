@@ -1,4 +1,4 @@
-package com.dydko.lessonsgenericpowerfull.tests;
+package com.dydko.lessonsgenericpowerful.tests;
 
 import com.codeborne.selenide.Selenide;
 import com.dydko.config.ConfigKeys;

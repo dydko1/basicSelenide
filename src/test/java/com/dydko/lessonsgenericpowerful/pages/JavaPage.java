@@ -2,9 +2,9 @@ package com.dydko.lessonsgenericpowerful.pages;
 
 import static com.codeborne.selenide.Selenide.page;
 
-public class WikipediaJavaPage {
+public class JavaPage {
 
-    public WikipediaTabs tabs() {
-        return page(WikipediaTabs.class);
+    public ArticleTabs tabs() {
+        return page(ArticleTabs.class);
     }
 }

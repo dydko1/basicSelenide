@@ -1,9 +1,5 @@
 package com.dydko.config;
 
-import lombok.AccessLevel;
-import lombok.AllArgsConstructor;
-
-@AllArgsConstructor(access = AccessLevel.PRIVATE)
 public final class ConfigKeys {
     public static final class App {
         public static final String BASE_URL = "app.baseUrl";

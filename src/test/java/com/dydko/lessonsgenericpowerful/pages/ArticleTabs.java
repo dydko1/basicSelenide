@@ -2,11 +2,11 @@ package com.dydko.lessonsgenericpowerful.pages;
 
 import com.codeborne.selenide.SelenideElement;
 
-import static com.codeborne.selenide.Condition.interactable;
+import static com.codeborne.selenide.Condition.exist;
 import static com.codeborne.selenide.Selenide.$x;
 import static com.codeborne.selenide.Selenide.page;
 
-public class WikipediaTabs {
+public class ArticleTabs {
 
     private static final String TOP_TABS_TEMPLATE = "//div[@id='p-associated-pages']//a[normalize-space()='%s']";
     private static final String TOOLS_TABS_TEMPLATE = "//div[@id='p-views']//a[normalize-space()='%s']";
@@ -28,6 +28,6 @@ public class WikipediaTabs {
         String normalizedLabel = label == null ? "" : label.trim();
         return $x(template
                 .formatted(normalizedLabel))
-                .shouldBe(interactable);
+                .shouldBe(exist);
     }
 }

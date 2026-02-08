@@ -12,7 +12,6 @@ public class TestSetup {
         Configuration.headless = Boolean.parseBoolean(TestProperties.get(ConfigKeys.Browser.HEADLESS));
         Configuration.browserSize = TestProperties.get(ConfigKeys.Browser.SIZE);
         Configuration.browserPosition = "0x0";
-
         Configuration.screenshots = false;
         Configuration.savePageSource = false;
     }

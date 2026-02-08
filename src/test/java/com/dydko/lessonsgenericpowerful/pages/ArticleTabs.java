@@ -2,7 +2,10 @@ package com.dydko.lessonsgenericpowerful.pages;
 
 import com.codeborne.selenide.SelenideElement;
 
-import static com.codeborne.selenide.Condition.exist;
+import java.util.Objects;
+import java.util.function.Consumer;
+
+import static com.codeborne.selenide.Condition.interactable;
 import static com.codeborne.selenide.Selenide.$x;
 import static com.codeborne.selenide.Selenide.page;
 
@@ -11,23 +14,28 @@ public class ArticleTabs {
     private static final String TOP_TABS_TEMPLATE = "//div[@id='p-associated-pages']//a[normalize-space()='%s']";
     private static final String TOOLS_TABS_TEMPLATE = "//div[@id='p-views']//a[normalize-space()='%s']";
 
-    public <T> T selectTabTop(String label, Class<T> clazz) {
-        return clickAndPage(label, TOP_TABS_TEMPLATE, clazz);
+    public <T> T selectTabTop(String label, Class<T> clazz, Consumer<T> shouldBeLoaded) {
+        Objects.requireNonNull(shouldBeLoaded, "shouldBeLoaded must not be null");
+        click(label, TOP_TABS_TEMPLATE);
+        T p = page(clazz);
+        shouldBeLoaded.accept(p);
+        return p;
     }
 
-    public <T> T selectTool(String label, Class<T> clazz) {
-        return clickAndPage(label, TOOLS_TABS_TEMPLATE, clazz);
+    public <T> T selectTool(String label, Class<T> clazz, Consumer<T> shouldBeLoaded) {
+        Objects.requireNonNull(shouldBeLoaded, "shouldBeLoaded must not be null");
+        click(label, TOOLS_TABS_TEMPLATE);
+        T p = page(clazz);
+        shouldBeLoaded.accept(p);
+        return p;
     }
 
-    private <T> T clickAndPage(String label, String template, Class<T> clazz) {
-        section(label, template).click();
-        return page(clazz);
+    private void click(String label, String template) {
+        section(label, template).shouldBe(interactable).click();
     }
 
     private SelenideElement section(String label, String template) {
-        String normalizedLabel = label == null ? "" : label.trim();
-        return $x(template
-                .formatted(normalizedLabel))
-                .shouldBe(exist);
+        String normalized = label == null ? "" : label.trim();
+        return $x(template.formatted(normalized));
     }
 }

@@ -1,14 +1,15 @@
 package com.dydko.lessonsgenericpowerful.pages;
 
-import static com.codeborne.selenide.Condition.text;
+import com.codeborne.selenide.SelenideElement;
+
 import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selenide.$;
 
 public class ArticlePage {
+    private final SelenideElement heading = $("#firstHeading");
 
-    public void assertLoaded() {
-        $("#firstHeading")
-                .shouldBe(visible)
-                .shouldHave(text("Java"));
+    public ArticlePage shouldBeLoaded() {
+        heading.shouldBe(visible);
+        return this;
     }
 }

@@ -11,23 +11,17 @@ public class ArticleTabsTest extends BaseTest {
 
   @Test
   void should_open_article_and_history_using_generic_tabs() {
-    JavaPage page = page(JavaPage.class);
+    JavaPage javaPage = page(JavaPage.class);
 
-    ArticlePage article = page.tabs().selectTabTop("Article", ArticlePage.class);
-    article.assertLoaded();
-
-    HistoryPage history = page.tabs().selectTool("View history", HistoryPage.class);
-    history.assertLoaded();
+    javaPage.tabs().selectTabTop("Article", ArticlePage.class, ArticlePage::shouldBeLoaded);
+    javaPage.tabs().selectTool("View history", HistoryPage.class, HistoryPage::shouldBeLoaded);
   }
 
-//  @Test
-//  void should_open_article_and_history_using_generic_tabs2() {
-//    WikipediaJavaPage wiki = new WikipediaJavaPage();
-//
-//    ArticlePage article = wiki.tabs().selectTabTop("Article", ArticlePage.class);
-//    article.assertLoaded();
-//
-//    HistoryPage history = wiki.tabs().selectTool("View history", HistoryPage.class);
-//    history.assertLoaded();
-//  }
+  @Test
+  void should_open_article_and_history_using_dsl() {
+    JavaPage javaPage = page(JavaPage.class);
+
+    javaPage.goToArticle();
+    javaPage.goToHistory();
+  }
 }

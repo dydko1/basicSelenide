@@ -1,11 +1,23 @@
 <configuration>
+
+    <!-- global level -->
+    <root level="WARN">
+        <appender-ref ref="STDOUT"/>
+    </root>
+
     <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
         <encoder>
-            <pattern>%d{HH:mm:ss} [%level] %msg%n</pattern>
+            <pattern>%msg%n</pattern>
         </encoder>
     </appender>
 
-    <root level="INFO">
-        <appender-ref ref="STDOUT"/>
-    </root>
+    <!-- ucisz Selenide -->
+    <logger name="com.codeborne.selenide" level="WARN"/>
+
+    <!-- ucisz Selenium -->
+    <logger name="org.openqa.selenium" level="WARN"/>
+
+    <!-- Twoje logi zostaw -->
+    <logger name="com.dydko" level="INFO"/>
+
 </configuration>

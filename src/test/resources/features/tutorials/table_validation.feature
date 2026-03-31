@@ -2,7 +2,7 @@
 Feature: Table validation
 
   Scenario:  Validate user in table
-    Given I open tables page
+    Given I open tables page "https://the-internet.herokuapp.com/tables"
     Then I check table contains:
       | Last Name | First Name | Email            | Web Site              |
       | Smith     | John       | jsmith@gmail.com | http://www.jsmith.com |

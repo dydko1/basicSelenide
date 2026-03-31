@@ -1,8 +1,8 @@
 package com.dydko.steps;
 
+import com.dydko.assertion.AssertionHelper;
 import com.dydko.data.TableData;
 import com.dydko.page.TablesPage;
-import com.dydko.helper.AssertionHelper;
 import io.cucumber.datatable.DataTable;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
@@ -16,31 +16,34 @@ public class TableSteps {
 
     private final TablesPage tablesPage = new TablesPage();
 
-    @Given("I open tables page")
-    public void openPage() {
-        tablesPage.openUrl("https://the-internet.herokuapp.com/tables");
+    @Given("I open tables page {string}")
+    public void openPage(String url) {
+        tablesPage.openUrl(url);
     }
 
     @Then("I check table contains:")
     public void i_store_variables(DataTable dataTable) {
         List<Map<String, String>> expectedRows =
                 dataTable.asMaps(String.class, String.class);
-
         TableData table = tablesPage.getTable();
 
-        log.info("KEY COLUMN: {}", table.getKeyColumn());
-        log.info("ACTUAL TABLE: {}", table.getRows());
+        log.info("KEY COLUMN: {}", table.keyColumn());
+        log.info("ACTUAL TABLE: {}", table.rows());
 
         expectedRows.forEach(expected -> {
-            String key = expected.get(table.getKeyColumn());
+
+            String key = expected.get(table.keyColumn());
+
             if (key == null) {
                 throw new IllegalArgumentException(
-                        "Missing key column in expected row: " + table.getKeyColumn()
+                        "Missing key column in expected row: " + table.keyColumn()
                 );
             }
+
             log.info("CHECKING ROW FOR KEY: {}", key);
+
             AssertionHelper.assertRowByKey(
-                    table.getRows(),
+                    table.rows(),
                     key,
                     expected
             );

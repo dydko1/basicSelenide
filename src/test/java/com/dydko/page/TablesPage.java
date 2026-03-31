@@ -22,15 +22,12 @@ public class TablesPage {
         open(url);
     }
 
-
     public TableData getTable() {
-
         List<String> headers = table
                 .shouldBe(visible)
                 .$$("thead th")
                 .shouldHave(sizeGreaterThan(0))
                 .texts();
-
         String keyColumn = headers.get(0);
 
         log.debug("Headers: {}", headers);
@@ -38,14 +35,9 @@ public class TablesPage {
 
         Map<String, Map<String, String>> rows = table.$$("tbody tr").stream()
                 .map(row -> row.$$("td").texts())
-                .map(cells ->
-                        IntStream.range(0, headers.size())
-                                .boxed()
-                                .collect(Collectors.toMap(
-                                        headers::get,
-                                        i -> i < cells.size() ? cells.get(i) : ""
-                                ))
-                )
+                .map(cells -> IntStream.range(0, headers.size())
+                        .boxed()
+                        .collect(Collectors.toMap(headers::get, i -> i < cells.size() ? cells.get(i) : "")))
                 .collect(Collectors.toMap(
                         row -> row.get(keyColumn),
                         row -> row,
@@ -55,7 +47,6 @@ public class TablesPage {
                 ));
 
         log.debug("Parsed rows: {}", rows);
-
         return new TableData(keyColumn, rows);
     }
 }

@@ -1,9 +1,8 @@
-package com.dydko.helper;
+package com.dydko.assertion;
 
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
-import java.util.Optional;
 
 public class AssertionHelper {
 
@@ -28,8 +27,7 @@ public class AssertionHelper {
             throw new AssertionError(
                     "\nKey: " + key +
                             "\nMismatches:\n" + String.join("\n", mismatches) +
-                            "\nActual row: " + actual
-            );
+                            "\nActual row: " + actual);
         }
     }
 }

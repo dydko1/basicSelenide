@@ -1,6 +1,7 @@
-Feature: Customer creation
+Feature: PDF validation
 
-  Scenario: Build customer with DSL
-    When I build customer request
-      | pesel         | firstName | surname | city  |
-      | $pesel.@pesel | Jan       | Pop     | ddddd |
+  Scenario: Validate insurance document content
+    Then PDF "sample_test_pdf.pdf" should contain:
+      | imie  | Jan Kowalski |
+      | numer | 1234567890   |
+      | kwota | 100 PLN     |

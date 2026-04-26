@@ -19,6 +19,7 @@
         <assertj-core.version>3.27.7</assertj-core.version>
         <logback.version>1.5.12</logback.version>
         <jna.version>5.14.0</jna.version>
+        <gson.version>2.13.2</gson.version>
         <maven-surefire-plugin.version>3.5.4</maven-surefire-plugin.version>
     </properties>
     <dependencies>
@@ -62,6 +63,13 @@
             <groupId>net.java.dev.jna</groupId>
             <artifactId>jna</artifactId>
             <version>${jna.version}</version>
+        </dependency>
+        <!-- Source: https://mvnrepository.com/artifact/com.google.code.gson/gson -->
+        <dependency>
+            <groupId>com.google.code.gson</groupId>
+            <artifactId>gson</artifactId>
+            <version>${gson.version}</version>
+            <scope>compile</scope>
         </dependency>
         <dependency>
             <groupId>org.assertj</groupId>

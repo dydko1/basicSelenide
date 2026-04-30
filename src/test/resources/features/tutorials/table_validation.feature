@@ -1,15 +1,8 @@
-@fake_table_validation
-Feature: Table validation
+Feature: DataTables - subset validation
 
-  Scenario:  Validate user in table
-    Given I open tables page "https://the-internet.herokuapp.com/tables"
-    Then I check table contains:
-      | Last Name | First Name | Email            | Web Site              |
-      | Smith     | John       | jsmith@gmail.com | http://www.jsmith.com |
-      | Bach      | Frank      | fbach@yahoo.com  | http://www.frank.com  |
-#    And variable "active" should be boolean true
-#    And variable "qty" should be int 12
-#    And variable "bigNumber" should be long 5000000000
-#    And variable "price" should be decimal "1299.99"
-#    And variable "note" should be string "hello world"
-
+  Scenario: Check selected users exist in table
+    Given I open tables page "https://datatables.net/examples/data_sources/ajax.html"
+    Then I expected users
+      | Name            | Position         | Office    | Start date |
+      | Tiger Nixon     | System Architect | Edinburgh | 2011-04-25 |
+      | Garrett Winters | Accountant       | Tokyo     | 2011-07-25 |

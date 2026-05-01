@@ -1,6 +1,6 @@
 package com.dydko.pages;
 
-
+import com.codeborne.selenide.SelenideElement;
 import com.dydko.models.User;
 import com.dydko.pages.components.UsersTable;
 
@@ -11,19 +11,13 @@ import static com.codeborne.selenide.Selenide.$;
 
 public class UsersPage {
 
+    private SelenideElement search = $(".dt-search input");
     private final UsersTable table = new UsersTable();
 
-    public List<User> findByName(String name){
-
-        $(".dt-search input").clear();
-        $(".dt-search input").setValue(name);
-
-        $("table tbody").shouldHave(text(name)); // 🔥 najważniejsze
-
-        return table.getRows();
-    }
-
-    public List<User> getAll(){
-        return table.getRows();
+    public List<User> findByName(String name) {
+        search.clear();
+        search.setValue(name);
+        $("table tbody").shouldHave(text(name));
+        return table.rows();
     }
 }

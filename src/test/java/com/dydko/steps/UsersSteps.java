@@ -1,7 +1,6 @@
 package com.dydko.steps;
 
-import com.dydko.mappers.UserMapper;
-import com.dydko.models.User;
+import com.dydko.models.UserMapper;
 import com.dydko.pages.UsersPage;
 import com.dydko.validators.UserValidator;
 import io.cucumber.datatable.DataTable;
@@ -10,23 +9,16 @@ import io.cucumber.java.en.Given;
 import java.util.List;
 
 public class UsersSteps {
+    private final UsersPage page = new UsersPage();
 
     @Given("I expected users")
-    public void expected_users(DataTable table){
+    public void expected_users(DataTable table) {
+        var expected = UserMapper.from(table);
 
-        List<User> expected = UserMapper.from(table);
-
-        UsersPage page = new UsersPage();
-
-        // 🔥 najlepszy pattern: search per expected
         expected.forEach(exp -> {
-
-            List<User> result = page.findByName(exp.getName());
-
-            UserValidator.assertSubset(
-                    List.of(exp),
-                    result
-            );
+            var actual = page.findByName(exp.getName());
+            UserValidator.assertContains(actual, exp);
         });
+
     }
 }

@@ -3,14 +3,12 @@ package com.dydko.models;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import lombok.ToString;
+import lombok.Value;
 
-@RequiredArgsConstructor
-@Getter
-@ToString
+@Value
 public class User {
-
-    private final String name;
-    private final String position;
-    private final String office;
-    private final String startDate;
+     String name;
+     String position;
+     String office;
+     String startDate;
 }

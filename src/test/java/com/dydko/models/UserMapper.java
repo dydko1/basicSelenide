@@ -1,9 +1,10 @@
-package com.dydko.mappers;
+package com.dydko.models;
 
-import com.dydko.models.User;
 import io.cucumber.datatable.DataTable;
 
 import java.util.List;
+
+import static com.dydko.constants.EmployeeColumns.*;
 
 public class UserMapper {
 
@@ -12,11 +13,10 @@ public class UserMapper {
         return table.asMaps(String.class, String.class)
                 .stream()
                 .map(row -> new User(
-                        row.get("Name"),
-                        row.get("Position"),
-                        row.get("Office"),
-                        row.get("Start date")
-                ))
+                        row.get(NAME),
+                        row.get(POSITION),
+                        row.get(OFFICE),
+                        row.get(START_DATE)))
                 .toList();
     }
 }

@@ -1,12 +1,10 @@
 package com.dydko.steps;
 
-import com.dydko.models.UserMapper;
+import com.dydko.mappers.UserMapper;
 import com.dydko.pages.UsersPage;
 import com.dydko.validators.UserValidator;
 import io.cucumber.datatable.DataTable;
 import io.cucumber.java.en.Given;
-
-import java.util.List;
 
 public class UsersSteps {
     private final UsersPage page = new UsersPage();

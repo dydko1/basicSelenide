@@ -1,6 +1,6 @@
 package com.dydko.steps;
 
-import com.dydko.models.CountryGDPMapper;
+import com.dydko.mappers.CountryGDPMapper;
 import com.dydko.pages.CountryGDPPage;
 import com.dydko.validators.CountryGDPValidator;
 import io.cucumber.datatable.DataTable;

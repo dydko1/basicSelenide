@@ -8,9 +8,16 @@ Feature: DataTables - subset validation
       | Garrett Winters | Accountant       | Tokyo     | 2011-07-25 |
 
   Scenario: GDP validation
-
     Given I open tables page "https://en.wikipedia.org/wiki/List_of_countries_by_GDP_(nominal)"
     Then GDP table contains countries
       | Country | IMF       | World Bank | UN      |
       | Poland  | 1,134,248 | 917,767    | 914,696 |
       | Rwanda  | 17,336    | 14,252     | 15,111  |
+
+  Scenario: Population  validation
+    Given I open tables population page "https://www.worldometers.info/world-population/population-by-country/"
+#    When I read all countries
+#    Then I should see following countries:
+#      | name    | population | yearlyChange | density |
+#      | Poland  | 37,846,611 | -0.11%       | 124     |
+#      | Germany | 83,783,942 | 0.32%        | 240     |

@@ -1,5 +1,6 @@
-package com.dydko.models;
+package com.dydko.mappers;
 
+import com.dydko.models.CountryGDP;
 import io.cucumber.datatable.DataTable;
 
 import java.util.List;

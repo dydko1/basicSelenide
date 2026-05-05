@@ -16,8 +16,8 @@ Feature: DataTables - subset validation
 
   Scenario: Population  validation
     Given I open tables population page "https://www.worldometers.info/world-population/population-by-country/"
-#    When I read all countries
-#    Then I should see following countries:
-#      | name    | population | yearlyChange | density |
-#      | Poland  | 37,846,611 | -0.11%       | 124     |
-#      | Germany | 83,783,942 | 0.32%        | 240     |
+    When I read all countries
+    Then I should see following countries:
+      | name    | population | yearlyChange | density |
+      | Poland  | 37,843,188 | -0.78%       | 124     |
+      | Germany | 83,644,258 | -0.51%       | 240     |

@@ -4,6 +4,7 @@ import com.codeborne.selenide.CollectionCondition;
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.SelenideElement;
+import com.dydko.pages.components.TableComponent;
 
 
 import java.util.List;
@@ -20,6 +21,6 @@ public class PopulationPage {
         ElementsCollection rows = table.$$("tbody tr")
                 .shouldBe(CollectionCondition.sizeGreaterThan(50));
 
-        return null;
+        return new TableComponent(table).parseTable();
     }
 }

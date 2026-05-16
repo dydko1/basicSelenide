@@ -15,9 +15,18 @@ Feature: DataTables - subset validation
       | Rwanda  | 17,336    | 14,252     | 15,111  |
 
   Scenario: Population  validation
-    Given I open tables population page "https://www.worldometers.info/world-population/population-by-country/"
+    Given I open tables population page "https://www.worldometers.info/world-population/population-by-country"
     When I read all countries
     Then I should see following countries:
       | name    | population | yearlyChange | density |
       | Poland  | 37,843,188 | -0.78%       | 124     |
       | Germany | 83,644,258 | -0.51%       | 240     |
+
+  Scenario: ISO country page
+    Given I open tables population page "https://www.iban.com/country-codes"
+    When I read all ISO countries
+    Then I should see following ISO countries:
+      | country | alpha2 | alpha3 | numeric |
+      | Poland  | PL     | POL    | 616     |
+      | Germany | DE     | DEU    | 276     |
+      | France  | FR     | FRA    | 250     |

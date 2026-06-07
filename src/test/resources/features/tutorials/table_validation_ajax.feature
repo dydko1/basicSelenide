@@ -30,3 +30,12 @@ Feature: DataTables - subset validation
       | Poland  | PL     | POL    | 616     |
       | Germany | DE     | DEU    | 276     |
       | France  | FR     | FRA    | 250     |
+
+  Scenario: ISO country page - repeated
+    Given I open tables population page "https://www.iban.com/country-codes"
+    When I read all ISO countries2
+    Then I should see following ISO countries2:
+      | country | alpha2 | alpha3 | numeric |
+      | Poland  | PL     | POL    | 616     |
+      | Germany | DE     | DEU    | 276     |
+      | France  | FR     | FRA    | 250     |

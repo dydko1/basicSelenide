@@ -8,14 +8,11 @@ import io.cucumber.java.Before;
 public class Hooks {
 
     @Before
-    public void beforeScenario() {
-
+    public void beforeHooks() {
         BrowserConfiguration.configure();
     }
-
     @After
-    public void afterScenario() {
-
+    public void afterHooks() {
         Selenide.closeWebDriver();
     }
 }

@@ -1,21 +1,18 @@
 package com.dydko.config;
 
+import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.Configuration;
 
 public class BrowserConfiguration {
 
-    public static void configure() {
+    private BrowserConfiguration() {
+    }
 
+    public static void configure(){
         Configuration.browser = "chrome";
-
-        Configuration.browserSize =
-                "1920x1080";
-
+        Configuration.browserSize = "1024x768";
+        Configuration.timeout = 5000;
+        Configuration.pageLoadTimeout = 10000;
         Configuration.headless = false;
-
-        Configuration.timeout = 10000;
-
-        Configuration.baseUrl =
-                "https://the-internet.herokuapp.com";
     }
 }

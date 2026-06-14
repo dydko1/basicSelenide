@@ -4,12 +4,11 @@ import com.codeborne.selenide.SelenideElement;
 
 import static com.codeborne.selenide.Selenide.$;
 
-public class TablesPage extends BasePage {
+public class LoginPage extends BasePage {
 
-    public static final String URL = "https://the-internet.herokuapp.com/tables";
+    private static final String URL = "https://the-internet.herokuapp.com/login";
 
-    // private final SelenideElement table = $("#table1");
-    private SelenideElement pageHeader = $("h3");
+    private final SelenideElement pageHeader = $("h2");
 
     @Override
     protected String getUrl() {

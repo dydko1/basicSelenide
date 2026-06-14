@@ -1,8 +1,8 @@
-package com.dydko.models;
+package com.dydko.models.older_1;
 
-public record User(
-        String firstName,
+public record User01(
         String lastName,
+        String firstName,
         String email,
         String due,
         String website

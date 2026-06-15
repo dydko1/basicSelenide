@@ -22,6 +22,6 @@ public class TablesPage extends BasePage {
     }
 
     public String gePageTitle() {
-        return pageHeader.getText();
+        return getPageIdentifier().getText();
     }
 }

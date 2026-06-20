@@ -4,7 +4,7 @@ import com.codeborne.selenide.SelenideElement;
 
 import static com.codeborne.selenide.Selenide.$;
 
-public class LoginPage extends BasePage {
+public class LoginLesson02Page extends BasePage {
 
     private static final String URL = "https://the-internet.herokuapp.com/login";
 
@@ -20,7 +20,8 @@ public class LoginPage extends BasePage {
         return pageHeader;
     }
 
-    public String gePageTitle() {
-        return getPageIdentifier().getText();
+    public String getPageTitle(){
+        return getPageIdentifier()
+                .getText();
     }
 }

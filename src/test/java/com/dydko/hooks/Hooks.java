@@ -11,6 +11,7 @@ public class Hooks {
     public void beforeHooks() {
         BrowserConfiguration.configure();
     }
+
     @After
     public void afterHooks() {
         Selenide.closeWebDriver();

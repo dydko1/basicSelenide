@@ -9,15 +9,15 @@ public abstract class BasePage {
 
     public void openPage() {
         open(getUrl());
-        verifyPageLoader();
-    }
-
-    private void verifyPageLoader() {
-        getPageIdentifier()
-                .shouldBe(Condition.visible);
+        verifyPageLoaded();
     }
 
     protected abstract String getUrl();
 
     protected abstract SelenideElement getPageIdentifier();
+
+    private void verifyPageLoaded() {
+        getPageIdentifier()
+                .shouldBe(Condition.visible);
+    }
 }

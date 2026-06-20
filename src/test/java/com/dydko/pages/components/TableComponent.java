@@ -1,12 +1,15 @@
 package com.dydko.pages.components;
 
+import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.SelenideElement;
 
-public abstract class TableComponent {
-
-    protected final SelenideElement root;
+public abstract class TableComponent extends BaseComponent {
 
     protected TableComponent(SelenideElement root) {
-        this.root = root;
+        super(root);
+    }
+
+    protected ElementsCollection getRows() {
+        return root.$$("tbody tr");
     }
 }

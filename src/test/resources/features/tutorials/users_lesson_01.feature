@@ -1,6 +1,6 @@
 Feature: Users table
 
   Scenario: Read first user
-    Given user opens tables page lesson 1
+    Given user opens tables page lesson 01
 #    When user reads first row
 #    Then user should be valid

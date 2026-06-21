@@ -1,9 +1,12 @@
 package com.dydko.pages;
 
 import com.codeborne.selenide.SelenideElement;
+import com.dydko.pages.components.UserTableLesson03Component;
+import lombok.Getter;
 
 import static com.codeborne.selenide.Selenide.$;
 
+@Getter
 public class TablesLesson02Page extends BasePage {
 
     private static final String URL =
@@ -11,6 +14,7 @@ public class TablesLesson02Page extends BasePage {
 
     private final SelenideElement pageHeader = $("h3");
 
+    private UserTableLesson03Component userTable = new UserTableLesson03Component($("#table1"));
 
     @Override
     protected String getUrl() {
@@ -26,4 +30,8 @@ public class TablesLesson02Page extends BasePage {
         return getPageIdentifier()
                 .getText();
     }
+
+//    public UserTableLesson03Component getUserTable() {
+//        return userTable;
+//    }
 }

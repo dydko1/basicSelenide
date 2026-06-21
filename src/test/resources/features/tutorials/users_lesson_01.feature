@@ -9,3 +9,6 @@ Feature: Users table
   Scenario: User opens logins lesson 02
     Given user opens logins page lesson 02
 
+  Scenario: User opens tables lesson 03
+    Given user opens tables page lesson 02
+    Then table contains 4 rows

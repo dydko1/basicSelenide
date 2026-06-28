@@ -3,17 +3,17 @@ package com.dydko.pages.components;
 import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.SelenideElement;
 
-public class UserTableLesson03Component extends TableLesson03Component{
+public class UserTableLesson03Component extends TableLesson03Component {
 
-    public UserTableLesson03Component(SelenideElement root ){
+    public UserTableLesson03Component(SelenideElement root) {
         super(root);
     }
 
-    public int getRowCount(){
+    public int getRowCount() {
         return getRows().size();
     }
 
-    public ElementsCollection getRowsCollection(){
+    public ElementsCollection getRowsCollection() {
         return getRows();
     }
 }

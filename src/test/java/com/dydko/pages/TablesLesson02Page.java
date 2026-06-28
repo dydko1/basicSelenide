@@ -31,7 +31,7 @@ public class TablesLesson02Page extends BasePage {
                 .getText();
     }
 
-    public UserTableLesson03Component getUserTable() {
-        return userTable;
-    }
+//    public UserTableLesson03Component getUserTable() {
+//        return userTable;
+//    }
 }

@@ -24,11 +24,11 @@ public class TablesLesson02Steps {
 
     @Then("table contains {int} rows")
     public void tableContainsRows(int expectedRow) {
+
         int actualRows = tablesPage
                 .getUserTable()
                 .getRowCount();
 
-        assertThat(actualRows)
-                .isEqualTo(expectedRow);
+        assertThat(actualRows).isEqualTo(expectedRow);
     }
 }

@@ -13,7 +13,11 @@ Feature: Users table
     Given user opens tables page lesson 02
     Then table contains 4 rows
 
-  ### tu zacząć
   Scenario: User opens challenging dom - lesson 04
     Given user opens challenging dom lesson 04
     Then table should contain rows
+
+  Scenario: User opens dynamic loading - lesson 05
+    Given user opens dynamic loading page - lesson 05
+    When user starts loading
+    Then Then hello world message is displayed

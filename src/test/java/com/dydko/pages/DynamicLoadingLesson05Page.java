@@ -10,6 +10,7 @@ public class DynamicLoadingLesson05Page extends BasePage {
     private static final String URL =
             "https://the-internet.herokuapp.com/dynamic_loading/1";
 
+
     private final SelenideElement startButton =
             $("#start button");
     @Getter
@@ -21,13 +22,13 @@ public class DynamicLoadingLesson05Page extends BasePage {
         return URL;
     }
 
-    public void clickStart() {
-        startButton.click();
-    }
-
     @Override
     protected SelenideElement getPageIdentifier() {
         return startButton;
+    }
+
+    public void clickStart() {
+        startButton.click();
     }
 
     public String getFinishMessage() {

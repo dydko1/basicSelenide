@@ -24,10 +24,10 @@ public class DynamicLoadingLesson05Steps {
     }
 
     @Then("Then hello world message is displayed")
-    public void thenHelloWorldMessageIsDisplayed() {
-        page.getFinishText().shouldBe(Condition.visible);
-
+    public void helloWorldMessageIsDisplayed() {
+        page.getFinishText()
+                .shouldBe(Condition.visible);
         assertThat(page.getFinishMessage())
-                .isEqualTo("Hello World!");
+                .isEqualTo("Hello World!1");
     }
 }

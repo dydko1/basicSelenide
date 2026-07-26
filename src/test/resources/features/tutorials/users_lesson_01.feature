@@ -25,4 +25,4 @@ Feature: Users table
   Scenario: User exists in table - lesson 06
     Given user opens challenging dom lesson 04
     Then table should contain rows
-#    Then table contains user "Iuvaret"
+    Then table contains user "Iuvaret"

@@ -28,6 +28,6 @@ public class DynamicLoadingLesson05Steps {
         page.getFinishText()
                 .shouldBe(Condition.visible);
         assertThat(page.getFinishMessage())
-                .isEqualTo("Hello World!1");
+                .isEqualTo("Hello World!");
     }
 }

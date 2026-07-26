@@ -22,4 +22,13 @@ public class ChallengingDomLesson04Steps {
         int rows = page.getTable().getRowCount();
         assertThat(rows).isGreaterThan(0);
     }
+
+    @Then("table contains user {string}")
+    public void tableContainsUser(String lastName) {
+        boolean exists = page.getTable()
+                .containsUser(lastName);
+        assertThat(exists)
+                .isTrue();
+    }
+
 }

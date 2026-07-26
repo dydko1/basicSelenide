@@ -30,8 +30,4 @@ public class TablesLesson02Page extends BasePage {
         return getPageIdentifier()
                 .getText();
     }
-
-//    public UserTableLesson03Component getUserTable() {
-//        return userTable;
-//    }
 }

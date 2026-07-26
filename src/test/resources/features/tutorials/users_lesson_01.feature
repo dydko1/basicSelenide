@@ -21,3 +21,8 @@ Feature: Users table
     Given user opens dynamic loading page - lesson 05
     When user starts loading
     Then Then hello world message is displayed
+
+  Scenario: User exists in table - lesson 06
+    Given user opens challenging dom lesson 04
+    Then table should contain rows
+#    Then table contains user "Iuvaret"

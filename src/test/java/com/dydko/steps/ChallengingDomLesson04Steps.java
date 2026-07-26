@@ -14,13 +14,12 @@ public class ChallengingDomLesson04Steps {
     @Given("user opens challenging dom lesson 04")
     public void userOpensChallengingDomLesson() {
         page.openPage();
+
     }
 
     @Then("table should contain rows")
     public void tableShouldContainRows() {
-        int rows =
-                page.getTable().getRowCount();
-        assertThat(rows).
-                isGreaterThan(0);
+        int rows = page.getTable().getRowCount();
+        assertThat(rows).isGreaterThan(0);
     }
 }

@@ -28,8 +28,4 @@ public class ChallengingDomLesson04Page extends BasePage {
     protected SelenideElement getPageIdentifier() {
         return pageHeader;
     }
-
-//    public ChallengingDomTableLesson04Component getTable() {
-//        return table
-//    }
 }

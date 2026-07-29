@@ -26,3 +26,7 @@ Feature: Users table
     Given user opens challenging dom lesson 04
     Then table should contain rows
     Then table contains user "Iuvaret"
+
+  Scenario: User opens logins - lesson 08
+    Given user opens tables page lesson 02
+    Then email of "Doe" should be "jdoe@hotmail.com"

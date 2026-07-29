@@ -9,8 +9,4 @@ public class BaseLesson03Component {
     protected BaseLesson03Component(SelenideElement root) {
         this.root = root;
     }
-
-    SelenideElement getRoot() {
-        return root;
-    }
 }

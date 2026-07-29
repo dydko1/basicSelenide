@@ -25,8 +25,7 @@ public class ChallengingDomTableLesson04Component extends TableLesson03Component
     }
 
     public boolean containsUser(String lastName) {
-        return getRows()
-                .findBy(text(lastName))
+        return getRowByLastName(lastName)
                 .exists();
     }
 

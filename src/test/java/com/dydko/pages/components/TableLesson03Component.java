@@ -1,8 +1,11 @@
 package com.dydko.pages.components;
 
+import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.SelenideElement;
 
+import java.lang.reflect.Array;
+import java.util.Arrays;
 import java.util.List;
 
 public class TableLesson03Component extends BaseLesson03Component {
@@ -11,13 +14,12 @@ public class TableLesson03Component extends BaseLesson03Component {
         super(root);
     }
 
-    protected ElementsCollection getRows() {
-        return root.$$("tbody tr");
+    protected List<String> getHeaders() {
+        return root.$$("thead td").texts();
     }
 
-    protected List<String> getHeaders() {
-        return root.$$("thead th")
-                .texts();
+    protected ElementsCollection getRows() {
+        return root.$$("tbody tr");
     }
 
     protected ElementsCollection getCells(SelenideElement row) {
@@ -25,9 +27,22 @@ public class TableLesson03Component extends BaseLesson03Component {
     }
 
     protected SelenideElement getCell(SelenideElement row, int index) {
-        return getCells(row)
-                .get(index);
+        return row.$$("td").get(index);
+    }
 
+    protected ElementsCollection getRowsContaining(String text) {
+        return getRows()
+                .filterBy(Condition.text(text));
+    }
+
+    public ElementsCollection getRowsContaining(String... conditions) {
+        return getRows().filterBy(
+                Condition.match(
+                        "row contains all conditions",
+                        row ->
+                            Arrays.stream(conditions)
+                                    .allMatch(condition -> row.getText().contains(condition))
+                )
+        );
     }
 }
-

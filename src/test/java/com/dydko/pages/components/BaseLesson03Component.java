@@ -6,7 +6,7 @@ public class BaseLesson03Component {
 
     protected final SelenideElement root;
 
-    protected BaseLesson03Component(SelenideElement root) {
+    public BaseLesson03Component(SelenideElement root) {
         this.root = root;
     }
 }

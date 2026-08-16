@@ -1,7 +1,9 @@
 package com.dydko.steps;
 
+import com.dydko.models.User;
 import com.dydko.pages.LoginLesson02Page;
 import com.dydko.pages.TablesLesson07Page;
+import io.cucumber.java.PendingException;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 
@@ -37,5 +39,16 @@ public class TablesLesson02Steps {
         assertThat(tablesPage.getTable()
                 .getEmail(lastName))
                 .isEqualTo(email);
+    }
+
+    @Then("user {string} should have first name {string}")
+    public void userShouldHaveFirstName(
+            String lastName,
+            String expectedFirstName) {
+        User user =
+                tablesPage.getTable()
+                        .getUser(lastName);
+        assertThat(user.firstName())
+                .isEqualTo(expectedFirstName);
     }
 }

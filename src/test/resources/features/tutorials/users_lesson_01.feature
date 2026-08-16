@@ -30,3 +30,7 @@ Feature: Users table
   Scenario: User opens logins - lesson 08
     Given user opens tables page lesson 02
     Then email of "Doe" should be "jdoe@hotmail.com"
+
+  Scenario: User opens logins - lesson 09
+    Given user opens tables page lesson 02
+    Then user "Smith" should have first name "John"

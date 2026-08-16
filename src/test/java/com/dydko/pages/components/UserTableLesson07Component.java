@@ -1,7 +1,8 @@
 package com.dydko.pages.components;
 
-import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.SelenideElement;
+import com.dydko.mappers.UserMapper;
+import com.dydko.models.User;
 import com.dydko.parsers.TableLesson08Parser;
 
 import java.util.Map;
@@ -12,6 +13,9 @@ public class UserTableLesson07Component extends TableLesson03Component {
 
     private final TableLesson08Parser parser =
             new TableLesson08Parser();
+
+    private final UserMapper mapper =
+            new UserMapper();
 
     public UserTableLesson07Component(SelenideElement root) {
         super(root);
@@ -46,6 +50,18 @@ public class UserTableLesson07Component extends TableLesson03Component {
 //    }
 
     public Map<String, String> getUserData(String lastName) {
-        return parser.parse(getHeaders(), getUserRow(lastName));
+        return parser
+                .parse(
+                        getHeaders(),
+                        getUserRow(lastName)
+                );
     }
+
+    public User getUser(String lastName) {
+
+        return mapper.map(
+                getUserData(lastName)
+        );
+    }
+
 }

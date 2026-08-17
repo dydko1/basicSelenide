@@ -13,7 +13,11 @@ public class TableLesson08Parser {
                 .texts();
 
         if (headers.size() != values.size()) {
-            throw new IllegalStateException("Headers count differs from values count.");
+            throw new IllegalStateException("Number of headers does not match " +
+                    "number of values. Headers: " +
+                    headers.size() +
+                    ", values: " +
+                    values.size());
         }
         Map<String, String> result = new LinkedHashMap<>();
 

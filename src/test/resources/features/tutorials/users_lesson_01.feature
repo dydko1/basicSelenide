@@ -34,3 +34,11 @@ Feature: Users table
   Scenario: User opens logins - lesson 09
     Given user opens tables page lesson 02
     Then user "Smith" should have first name "John"
+
+
+  Scenario: Verify multiple users
+    Given user opens tables page lesson 02
+    Then users should match:
+      | lastName | firstName | email           | due    | webSite              | action      |
+      | Smith    | John      | jsmith@gmail.com | $50.00 | http://www.jsmith.com | edit delete |
+      | Bach     | Frank     | fbach@yahoo.com | $51.00 | http://www.frank.com | edit delete |

@@ -45,5 +45,14 @@ Feature: Users table
 
   Scenario: Share user between steps
     Given user opens tables page lesson 02
-    Given user "Smith" is loaded
+    And user "Smith" is loaded
     Then loaded user should have first name "John"
+
+  Scenario: Validate complete user
+    Given user opens tables page lesson 02
+    And user "Smith" is loaded
+    And expected user is:
+      | lastName | firstName | email            | due    | webSite               | action      |
+      | Smith    | John      | jsmith@gmail.com | $50.00 | http://www.jsmith.com | edit delete |
+    Then loaded user should match expected user
+

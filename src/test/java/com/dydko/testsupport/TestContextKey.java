@@ -2,5 +2,7 @@ package com.dydko.testsupport;
 
 public enum TestContextKey {
     USER,
-    USERS
+    EXPECTED_USER,
+    USERS,
+    EXPECTED_USERS
 }

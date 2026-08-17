@@ -39,6 +39,11 @@ Feature: Users table
   Scenario: Verify multiple users
     Given user opens tables page lesson 02
     Then users should match:
-      | lastName | firstName | email           | due    | webSite              | action      |
+      | lastName | firstName | email            | due    | webSite               | action      |
       | Smith    | John      | jsmith@gmail.com | $50.00 | http://www.jsmith.com | edit delete |
-      | Bach     | Frank     | fbach@yahoo.com | $51.00 | http://www.frank.com | edit delete |
+      | Bach     | Frank     | fbach@yahoo.com  | $51.00 | http://www.frank.com  | edit delete |
+
+  Scenario: Share user between steps
+    Given user opens tables page lesson 02
+    Given user "Smith" is loaded
+    Then loaded user should have first name "John"

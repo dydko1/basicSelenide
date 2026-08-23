@@ -13,9 +13,7 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <selenide.version>7.13.0</selenide.version>
         <junit-jupiter.version>5.13.3</junit-jupiter.version>
-        <lombok.version>1.18.42</lombok.version>
         <assertj-core.version>3.27.7</assertj-core.version>
-        <logback.version>1.5.12</logback.version>
         <maven-compiler-plugin.version>3.15.0</maven-compiler-plugin.version>
         <maven-surefire-plugin.version>3.5.4</maven-surefire-plugin.version>
     </properties>
@@ -56,9 +54,6 @@
                     <includes>
                         <include>**/*Test.java</include>
                     </includes>
-                    <systemPropertyVariables>
-                        <cucumber.filter.tags>${cucumber.filter.tags}</cucumber.filter.tags>
-                    </systemPropertyVariables>
                 </configuration>
             </plugin>
         </plugins>

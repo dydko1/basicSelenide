@@ -2,6 +2,7 @@ package com.dydko.pages;
 
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.SelenideElement;
+import com.dydko.pages.components.TextBoxFormComponent;
 
 import static com.codeborne.selenide.Selenide.$;
 
@@ -9,6 +10,9 @@ public class TextBoxPage extends BasePage {
 
     private static final String URL =
             "https://demoqa.com/text-box";
+
+    private final TextBoxFormComponent form =
+            new TextBoxFormComponent($("#userForm"));
 
     @Override
     protected String url() {
@@ -20,22 +24,7 @@ public class TextBoxPage extends BasePage {
         return $("#userName");
     }
 
-    public void fillPage(){
-
-        open();
-
-        $("#userName")
-                .setValue("Mirek");
-
-        $("#userEmail")
-                .setValue("mirek@example.com");
-
-        $("#currentAddress")
-                .setValue("Ruda Śląska");
-
-        $("#submit")
-                .scrollTo()
-                .shouldBe(Condition.visible)
-                .click();
+    public TextBoxFormComponent form() {
+        return form;
     }
 }

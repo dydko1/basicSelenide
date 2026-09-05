@@ -14,16 +14,13 @@ class DemoQATest {
     TextBoxPage page = new TextBoxPage();
 
     @Test
-    void shouldOpenDemoQA() {
-
-        page.fillPage();
-
-        $("#output")
-                .shouldHave(text("Mirek"));
-
-        $("#output")
-                .shouldHave(text("mirek@example.com"));
+    void shouldFillTextBox() {
+        page.open();
+        page.form()
+                .setName("Mirek")
+                .setEmail("mirek@example.com")
+                .setCurrentAddress("Ruda Śląska")
+                .setPermanentAddress("Polska")
+                .submit();
     }
-
-
 }

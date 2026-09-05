@@ -264,7 +264,7 @@ Kontynuujemy istniejący kurs i framework z QA_AUTOMATION_COURSE.md. To Moduł 4
 ## Prompt --- Moduł 5
 
 ``` text
-Kontynuujemy istniejący kurs i framework z QA_AUTOMATION_COURSE.md. To Moduł 5 — OrangeHRM. Używamy OrangeHRM Demo jako realistycznej aplikacji biznesowej. Ćwiczymy logowanie, dashboard, menu, employee page, formularze, tabelę, wyszukiwanie, usuwanie, waits i retry. Dla problemów pokaż rozwiązanie naiwne, jego problemy, wersję poprawioną i finalną. Unikaj overengineeringu. Kontynuuj od STATUS KURSU.
+Kontynuujemy istniejący kurs i framework z QA_AUTOMATION_COURSE.md. To Moduł 5 — OrangeHRM. Używamy OrangeHRM Demo jako realistycznej aplikacji biznesowej. Ćwiczymy logowanie, dashboard, menu, employee01 page, formularze, tabelę, wyszukiwanie, usuwanie, waits i retry. Dla problemów pokaż rozwiązanie naiwne, jego problemy, wersję poprawioną i finalną. Unikaj overengineeringu. Kontynuuj od STATUS KURSU.
 ```
 
 ## Prompt --- Moduł 6

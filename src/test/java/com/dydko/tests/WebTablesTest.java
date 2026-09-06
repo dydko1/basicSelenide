@@ -4,6 +4,7 @@ import com.dydko.models.Employee;
 import com.dydko.pages.WebTablesPage;
 import org.junit.jupiter.api.Test;
 
+import java.util.Comparator;
 import java.util.List;
 import java.util.Optional;
 import java.util.function.Predicate;
@@ -112,5 +113,40 @@ public class WebTablesTest {
         assertThat(employees)
                 .isNotEmpty()
                 .allMatch(condition);
+    }
+
+    @Test
+    void shouldSortEmployeesByAge() {
+        page.open();
+        List<Employee> employees =
+                page.employeeTable()
+                        .getEmployeesSortedByAge();
+        assertThat(employees)
+                .extracting(Employee::getAge)
+                .isSorted();
+    }
+
+    @Test
+    void shouldSortEmployeesBySalaryDescending() {
+        page.open();
+        List<Employee> employees =
+                page.employeeTable()
+                        .getEmployeesSortedBySalaryDescending();
+        assertThat(employees)
+                .extracting(Employee::getSalary)
+                .isSortedAccordingTo(
+                        Comparator.reverseOrder()
+                );
+    }
+
+    @Test
+    void shouldFindHighestPaidEmployee() {
+        page.open();
+        Employee employee =
+                page.employeeTable()
+                        .findHighestPaidEmployee()
+                        .orElseThrow();
+        assertThat(employee.getSalary())
+                .isEqualTo(10000);
     }
 }

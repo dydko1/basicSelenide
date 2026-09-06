@@ -3,6 +3,7 @@ package com.dydko.pages.components;
 import com.codeborne.selenide.SelenideElement;
 import com.dydko.models.Employee;
 
+import java.util.Comparator;
 import java.util.List;
 import java.util.Optional;
 import java.util.function.Predicate;
@@ -41,6 +42,33 @@ public class EmployeeTableComponent extends TableComponent {
         return getRows()
                 .stream()
                 .filter(condition)
+                .toList();
+    }
+
+    public List<Employee> getEmployeesSortedByAge() {
+        return getRows()
+                .stream()
+                .sorted(Comparator.comparing(Employee::getAge))
+                .toList();
+    }
+
+    public List<Employee> getEmployeesSortedBySalaryDescending() {
+        return getRows()
+                .stream()
+                .sorted(Comparator.comparing(Employee::getSalary).reversed())
+                .toList();
+    }
+
+    public Optional<Employee> findHighestPaidEmployee() {
+        return getRows()
+                .stream()
+                .max(Comparator.comparing(Employee::getSalary));
+    }
+
+    public List<Employee> getEmployeesSortedByDepartmentAndAge() {
+        return getRows()
+                .stream()
+                .sorted(Comparator.comparing(Employee::getDepartment).thenComparing(Employee::getAge))
                 .toList();
     }
 

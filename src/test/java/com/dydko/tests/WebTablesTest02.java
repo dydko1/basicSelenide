@@ -1,50 +1,52 @@
 package com.dydko.tests;
 
-import com.dydko.models.Employee;
-import com.dydko.pages.WebTablesPage;
+import com.dydko.models.Employee01;
+import com.dydko.pages.WebTablesPage01;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-public class WebTablesTest {
+public class WebTablesTest02 {
 
-    private final WebTablesPage page =
-            new WebTablesPage();
+    private final WebTablesPage01 page =
+            new WebTablesPage01();
 
     @Test
     void shouldGetEmployees() {
         page.open();
-        List<Employee> employees =
+        List<Employee01> employee01s =
                 page.employeeTable()
                         .getRows();
-        assertThat(employees)
+        assertThat(employee01s)
                 .hasSize(3);
     }
 
     @Test
     void shouldFindEmployeesOlderThan30() {
         page.open();
-
-        List<Employee> employeesOver30 =
+        List<Employee01> employeesOver30 =
                 page.employeeTable()
                         .getRows()
                         .stream()
-                        .filter(e -> e.getAge() > 30)
+                        .filter(employee01 ->
+                                employee01.age() > 30)
                         .toList();
         assertThat(employeesOver30)
-                .allMatch(e -> e.getAge() > 30);
+                .allMatch(employee01 ->
+                        employee01.age() > 30);
     }
 
     @Test
     void shouldGetEmployeeEmails() {
         page.open();
-        List<String> emails = page.employeeTable()
-                .getRows()
-                .stream()
-                .map(Employee::getEmail)
-                .toList();
+        List<String> emails =
+                page.employeeTable()
+                        .getRows()
+                        .stream()
+                        .map(Employee01::email)
+                        .toList();
         assertThat(emails)
                 .contains(
                         "cierra@example.com",
@@ -53,23 +55,21 @@ public class WebTablesTest {
                 );
     }
 
-
     @Test
     void shouldFindCierra() {
         page.open();
-        Employee employee =
+        Employee01 employee01 =
                 page.employeeTable()
                         .getRows()
                         .stream()
                         .filter(item ->
-                                item.getFirstName()
+                                item.firstName()
                                         .equals("Cierra"))
                         .findFirst()
                         .orElseThrow();
-        assertThat(employee.getAge())
+        assertThat(employee01.age())
                 .isEqualTo(39);
-        assertThat(employee.getDepartment())
+        assertThat(employee01.department())
                 .isEqualTo("Insurance");
-
     }
 }

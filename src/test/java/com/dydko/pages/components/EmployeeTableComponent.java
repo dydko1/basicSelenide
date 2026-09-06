@@ -12,7 +12,6 @@ public class EmployeeTableComponent extends TableComponent {
     }
 
     public List<Employee> getRows() {
-
         return root.$$("tbody tr")
                 .stream()
                 .map(this::extractRow)
@@ -20,18 +19,16 @@ public class EmployeeTableComponent extends TableComponent {
     }
 
     private Employee extractRow(SelenideElement row) {
+        List<String> values = row.$$("td")
+                .texts();
+        return Employee.builder()
+                .firstName(values.get(0))
+                .lastName(values.get(1))
+                .age(Integer.parseInt(values.get(2)))
+                .email(values.get(3))
+                .salary(Integer.parseInt(values.get(4)))
+                .department(values.get(5))
+                .build();
 
-        List<String> values =
-                row.$$("td")
-                        .texts();
-
-        return new Employee(
-                values.get(0),
-                values.get(1),
-                Integer.parseInt(values.get(2)),
-                values.get(3),
-                Integer.parseInt(values.get(4)),
-                values.get(5)
-        );
     }
 }

@@ -1,13 +1,13 @@
 package com.dydko.pages;
 
-import com.dydko.pages.components.EmployeeTableComponent01;
+import com.dydko.pages.components.EmployeeTableComponent02;
 
 import static com.codeborne.selenide.Selenide.$;
 
-public class EmployeePage extends BasePage {
+public class EmployeePage02 extends BasePage {
 
-    private final EmployeeTableComponent01 employeeTable =
-            new EmployeeTableComponent01($("table"));
+    private final EmployeeTableComponent02 employeeTable =
+            new EmployeeTableComponent02($("table"));
 
     @Override
     protected String url() {
@@ -19,7 +19,7 @@ public class EmployeePage extends BasePage {
         return $("table");
     }
 
-    public EmployeeTableComponent01 employeeTable() {
+    public EmployeeTableComponent02 employeeTable() {
         return employeeTable;
     }
 }

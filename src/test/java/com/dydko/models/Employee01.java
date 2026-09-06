@@ -1,9 +1,11 @@
 package com.dydko.models;
 
 public record Employee01(
-        String name,
-        String position,
-        String office,
-        int age
+        String firstName,
+        String lastName,
+        int age,
+        String email,
+        int salary,
+        String department
 ) {
 }

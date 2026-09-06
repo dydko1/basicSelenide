@@ -1,14 +1,13 @@
 package com.dydko.pages;
 
 import com.codeborne.selenide.SelenideElement;
-import com.dydko.pages.components.EmployeeTableComponent;
+import com.dydko.pages.components.EmployeeTableComponent01;
 
 import static com.codeborne.selenide.Selenide.$;
 
-public class WebTablesPage extends BasePage {
-
-    private final EmployeeTableComponent employeeTable =
-            new EmployeeTableComponent(
+public class WebTablesPage01 extends BasePage {
+    private final EmployeeTableComponent01 employeeTable =
+            new EmployeeTableComponent01(
                     $("table")
             );
 
@@ -22,7 +21,7 @@ public class WebTablesPage extends BasePage {
         return $("table");
     }
 
-    public EmployeeTableComponent employeeTable() {
+    public EmployeeTableComponent01 employeeTable() {
         return employeeTable;
     }
 }

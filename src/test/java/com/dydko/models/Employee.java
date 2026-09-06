@@ -1,11 +1,16 @@
 package com.dydko.models;
 
-public record Employee(
-        String firstName,
-        String lastName,
-        int age,
-        String email,
-        int salary,
-        String department
-) {
+import lombok.Builder;
+import lombok.Getter;
+
+@Getter
+@Builder
+public class Employee {
+
+    private final String firstName;
+    private final String lastName;
+    private final int age;
+    private final String email;
+    private final int salary;
+    private final String department;
 }

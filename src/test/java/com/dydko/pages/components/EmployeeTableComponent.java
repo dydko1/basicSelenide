@@ -5,8 +5,11 @@ import com.dydko.models.Employee;
 
 import java.util.Comparator;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
+import java.util.function.Function;
 import java.util.function.Predicate;
+import java.util.stream.Collectors;
 
 public class EmployeeTableComponent extends TableComponent {
 
@@ -70,6 +73,23 @@ public class EmployeeTableComponent extends TableComponent {
                 .stream()
                 .sorted(Comparator.comparing(Employee::getDepartment).thenComparing(Employee::getAge))
                 .toList();
+    }
+
+    public <R> List<R> getValues(Function<Employee, R> mapper) {
+        return getRows()
+                .stream()
+                .map(mapper)
+                .toList();
+    }
+
+    public Map<String, List<Employee>> groupByDepartment() {
+        return getRows()
+                .stream()
+                .collect(
+                        Collectors.groupingBy(
+                                Employee::getDepartment
+                        )
+                );
     }
 
     private Employee extractRow(SelenideElement row) {

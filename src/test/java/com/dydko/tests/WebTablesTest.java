@@ -149,4 +149,61 @@ public class WebTablesTest {
         assertThat(employee.getSalary())
                 .isEqualTo(10000);
     }
+
+    @Test
+    void shouldGetEmployeeEmails() {
+        page.open();
+        List<String> emails =
+                page.employeeTable()
+                        .getValues(Employee::getEmail);
+        assertThat(emails)
+                .contains(
+                        "cierra@example.com",
+                        "alden@example.com",
+                        "kierra@example.com");
+    }
+
+    @Test
+    void shouldGetEmployeeAges() {
+        page.open();
+        List<Integer> ages = page.employeeTable()
+                .getValues(Employee::getAge);
+        assertThat(ages)
+                .containsExactlyInAnyOrder(
+                        39,
+                        45,
+                        29);
+    }
+
+    @Test
+    void shouldGetEmployeeDepartments() {
+        page.open();
+        List<String> departments =
+                page.employeeTable()
+                        .getValues(Employee::getDepartment);
+        assertThat(departments)
+                .containsExactlyInAnyOrder(
+                        "Insurance",
+                        "Compliance",
+                        "Legal"
+                );
+    }
+
+    @Test
+    void shouldGetFullNames() {
+        page.open();
+        List<String> fullNames =
+                page.employeeTable()
+                        .getValues(employee ->
+                                employee.getFirstName()
+                                        + " "
+                                        + employee.getLastName()
+                        );
+        assertThat(fullNames)
+                .contains(
+                        "Cierra Vega",
+                        "Alden Cantrell",
+                        "Kierra Gentry"
+                );
+    }
 }

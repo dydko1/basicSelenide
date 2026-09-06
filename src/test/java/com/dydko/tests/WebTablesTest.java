@@ -53,7 +53,6 @@ public class WebTablesTest {
                 );
     }
 
-
     @Test
     void shouldFindCierra() {
         page.open();
@@ -70,6 +69,5 @@ public class WebTablesTest {
                 .isEqualTo(39);
         assertThat(employee.getDepartment())
                 .isEqualTo("Insurance");
-
     }
 }

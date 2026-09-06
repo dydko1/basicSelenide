@@ -4,6 +4,8 @@ import com.codeborne.selenide.SelenideElement;
 import com.dydko.models.Employee;
 
 import java.util.List;
+import java.util.Optional;
+import java.util.function.Predicate;
 
 public class EmployeeTableComponent extends TableComponent {
 
@@ -18,6 +20,30 @@ public class EmployeeTableComponent extends TableComponent {
                 .toList();
     }
 
+    public Optional<Employee> findByFirstName(String firstName) {
+        return getRows()
+                .stream()
+                .filter(e -> e.getFirstName()
+                        .equals(firstName))
+                .findFirst();
+    }
+
+    public List<Employee> findByDepartment(String department) {
+        return getRows()
+                .stream()
+                .filter(e ->
+                        e.getDepartment()
+                                .equals(department))
+                .toList();
+    }
+
+    public List<Employee> findEmployees(Predicate<Employee> condition) {
+        return getRows()
+                .stream()
+                .filter(condition)
+                .toList();
+    }
+
     private Employee extractRow(SelenideElement row) {
         List<String> values = row.$$("td")
                 .texts();
@@ -29,6 +55,5 @@ public class EmployeeTableComponent extends TableComponent {
                 .salary(Integer.parseInt(values.get(4)))
                 .department(values.get(5))
                 .build();
-
     }
 }

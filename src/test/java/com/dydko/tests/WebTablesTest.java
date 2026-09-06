@@ -5,6 +5,8 @@ import com.dydko.pages.WebTablesPage;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
+import java.util.Optional;
+import java.util.function.Predicate;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -14,60 +16,101 @@ public class WebTablesTest {
             new WebTablesPage();
 
     @Test
-    void shouldGetEmployees() {
+    void shouldFindEmployeeByFirstName() {
+        page.open();
+        Employee employee =
+                page.employeeTable()
+                        .findByFirstName("Cierra")
+                        .orElseThrow();
+        assertThat(employee.getLastName())
+                .isEqualTo("Vega");
+        assertThat(employee.getAge())
+                .isEqualTo(39);
+        assertThat(employee.getDepartment())
+                .isEqualTo("Insurance");
+    }
+
+    @Test
+    void shouldNotFindEmployee() {
+        page.open();
+        Optional<Employee> employee =
+                page.employeeTable()
+                        .findByFirstName("Mirek");
+        Optional<Employee> employee1 =
+                page.employeeTable()
+                        .findByFirstName("Cierra1");
+        assertThat(employee)
+                .isEmpty();
+        assertThat(employee1)
+                .isEmpty();
+    }
+
+    @Test
+    void shouldFindEmployeesByDepartment() {
         page.open();
         List<Employee> employees =
                 page.employeeTable()
-                        .getRows();
+                        .findByDepartment("Insurance");
         assertThat(employees)
-                .hasSize(3);
+                .isNotEmpty()
+                .allMatch(employee ->
+                        employee.getDepartment()
+                                .equals("Insurance"));
     }
 
     @Test
     void shouldFindEmployeesOlderThan30() {
         page.open();
-
-        List<Employee> employeesOver30 =
-                page.employeeTable()
-                        .getRows()
-                        .stream()
-                        .filter(e -> e.getAge() > 30)
-                        .toList();
-        assertThat(employeesOver30)
-                .allMatch(e -> e.getAge() > 30);
+        List<Employee> employees = page.employeeTable()
+                .findEmployees(employee ->
+                        employee.getAge() > 30);
+        assertThat(employees).isNotEmpty()
+                .allMatch(employee ->
+                        employee.getAge() > 30);
     }
 
     @Test
-    void shouldGetEmployeeEmails() {
+    void shouldFindHighlyPaidEmployeesOver30() {
         page.open();
-        List<String> emails = page.employeeTable()
-                .getRows()
-                .stream()
-                .map(Employee::getEmail)
-                .toList();
-        assertThat(emails)
-                .contains(
-                        "cierra@example.com",
-                        "alden@example.com",
-                        "kierra@example.com"
-                );
+        List<Employee> employees = page.employeeTable()
+                .findEmployees(e -> e.getAge() > 30
+                        && e.getSalary() > 5000);
+        assertThat(employees)
+                .allMatch(e -> e.getAge() > 30
+                        && e.getSalary() > 5000);
     }
 
     @Test
-    void shouldFindCierra() {
+    void shouldFindEmployeesByCondition() {
         page.open();
-        Employee employee =
+        Predicate<Employee> isFromInsurance =
+                employee ->
+                        employee.getDepartment()
+                                .equals("Insurance");
+        List<Employee> employees =
                 page.employeeTable()
-                        .getRows()
-                        .stream()
-                        .filter(item ->
-                                item.getFirstName()
-                                        .equals("Cierra"))
-                        .findFirst()
-                        .orElseThrow();
-        assertThat(employee.getAge())
-                .isEqualTo(39);
-        assertThat(employee.getDepartment())
-                .isEqualTo("Insurance");
+                        .findEmployees(isFromInsurance);
+        assertThat(employees)
+                .allMatch(isFromInsurance);
+    }
+
+    @Test
+    void shouldFindEmployeesOlderThan30FromInsurance() {
+        page.open();
+        Predicate<Employee> isOlderThan30 =
+                employee -> employee.getAge() > 30;
+        Predicate<Employee> worksInInsurance =
+                employee ->
+                        employee.getDepartment()
+                                .equals("Insurance");
+        Predicate<Employee> condition =
+                isOlderThan30
+                        .and(worksInInsurance);
+        List<Employee> employees =
+                page.employeeTable()
+                        .findEmployees(condition);
+        assertThat(employees)
+                .isNotEmpty()
+                .allMatch(condition);
     }
 }
